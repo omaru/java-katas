@@ -39,12 +39,7 @@ public class Test1OptionalCreationAndFetchingValues {
     @Order(1)
     public void emptyOptional() {
 
-        /*
-         * TODO:
-         *  Replace the "null" to create an empty Optional.
-         *  Check API: java.util.Optional.empty()
-         */
-        Optional<String> optionalEmptyString = null;
+        Optional<String> optionalEmptyString = Optional.empty();
 
         assertTrue(optionalEmptyString instanceof Optional,
                 "The optionalEmptyString should be an instance of Optional");
@@ -66,12 +61,12 @@ public class Test1OptionalCreationAndFetchingValues {
          *  Replace the "null" to create an Optional for anInteger.
          *  Check API: java.util.Optional.of(?)
          */
-        Optional<Integer> optionalForInteger = null;
+        Optional<Integer> optionalForInteger = Optional.of(1);
 
         assertTrue(optionalForInteger instanceof Optional,
                 "The optionalEmptyString should be an instance of Optional");
 
-        assertFalse(optionalForInteger.isEmpty(),
+        assertFalse(optionalForInteger.isPresent(),
                 "The optionalForInteger should not be empty");
     }
 
@@ -88,7 +83,7 @@ public class Test1OptionalCreationAndFetchingValues {
          *  Replace the "null" to create a nullable Optional for anInteger.
          *  Check API: java.util.Optional.ofNullable(?)
          */
-        Optional<Integer> optionalNullableInteger = Optional.of(10);
+        Optional<Integer> optionalNullableInteger = Optional.ofNullable(anInteger);
 
         assertTrue(optionalNullableInteger instanceof Optional,
                 "The optionalNullableInteger should be an instance of Optional");
@@ -112,7 +107,7 @@ public class Test1OptionalCreationAndFetchingValues {
          *  Replace the "false" to check that the Optional has a non-null value.
          *  Check API: java.util.Optional.isPresent()
          */
-        assertTrue(false,
+        assertTrue(optionalInteger.isPresent(),
                 "The optionalNullableInteger should be present");
 
 
@@ -125,7 +120,7 @@ public class Test1OptionalCreationAndFetchingValues {
          *  Replace the "false" to check that the Optional has a non-null value.
          *  Check API: java.util.Optional.isPresent()
          */
-        assertFalse(true,
+        assertFalse(optionalInteger.isPresent(),
                 "The optionalNullableInteger should not be present");
 
     }
@@ -146,7 +141,7 @@ public class Test1OptionalCreationAndFetchingValues {
          *  Check API: java.util.Optional.get()
          */
         assertEquals(10,
-                11,
+                optionalInteger.get(),
                 "The optionalNullableInteger should be present");
 
 
@@ -162,7 +157,7 @@ public class Test1OptionalCreationAndFetchingValues {
          */
         assertThrows(NoSuchElementException.class, () -> {
 
-            assertNotEquals(10,
+            assertNotEquals(anotherOptionalInteger.get(),
                     10,
                     "This call should throw a NoSuchElementException");
         });
